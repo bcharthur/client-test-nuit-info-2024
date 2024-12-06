@@ -17,6 +17,7 @@ if not os.path.exists(CACHE_DIR):
 def home():
     return redirect(url_for('list_items'))
 
+
 @app.route('/items')
 def list_items():
     r = requests.get(f"{API_BASE_URL}/items")
