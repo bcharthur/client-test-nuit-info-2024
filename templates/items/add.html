@@ -3,11 +3,16 @@
 {% block title %}Ajouter un Item{% endblock %}
 {% block body %}
 <h1>Ajouter un Item</h1>
-<form method="POST" action="{{ url_for('add_item') }}">
+<form method="POST" action="{{ url_for('add_item') }}" enctype="multipart/form-data">
     <div class="mb-3">
         <label for="label" class="form-label">Label de l'item</label>
         <input type="text" class="form-control" id="label" name="label" required>
     </div>
+    <div class="mb-3">
+        <label for="image" class="form-label">Image</label>
+        <input type="file" class="form-control" id="image" name="image" accept="image/*">
+    </div>
     <button type="submit" class="btn btn-success">Ajouter</button>
 </form>
+
 {% endblock %}

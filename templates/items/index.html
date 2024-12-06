@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 
 {% block title %}Liste des Items{% endblock %}
-
 {% block body %}
 <h1>Liste des Items</h1>
 <a class="btn btn-primary" href="{{ url_for('add_item') }}">Ajouter un item</a>
@@ -12,6 +11,7 @@
             <th>ID</th>
             <th>Label</th>
             <th>Actions</th>
+            <th>Image</th>
         </tr>
     </thead>
     <tbody>
@@ -26,11 +26,21 @@
                         <button class="btn btn-sm btn-danger" type="submit">Supprimer</button>
                     </form>
                 </td>
+                <td>
+                    {% if item.has_image %}
+                        <!-- Lien pour prévisualiser -->
+                        <a class="btn btn-sm btn-info" href="{{ url_for('fetch_image', item_id=item.id) }}" target="_blank">Prévisualiser</a>
+                        <!-- Lien pour télécharger -->
+                        <a class="btn btn-sm btn-secondary" href="{{ url_for('fetch_image', item_id=item.id) }}" download>Télécharger</a>
+                    {% else %}
+                        Aucune image
+                    {% endif %}
+                </td>
             </tr>
             {% endfor %}
         {% else %}
             <tr>
-                <td colspan="3" class="text-center">Aucun item</td>
+                <td colspan="4" class="text-center">Aucun item</td>
             </tr>
         {% endif %}
     </tbody>
