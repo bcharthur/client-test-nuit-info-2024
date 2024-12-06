@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Éditer un Item{% endblock %}
+{% block body %}
+<h1>Éditer l'Item</h1>
+<form method="POST" action="{{ url_for('edit_item', item_id=item.id) }}">
+    <div class="mb-3">
+        <label for="label" class="form-label">Label de l'item</label>
+        <input type="text" class="form-control" id="label" name="label" value="{{ item.label }}" required>
+    </div>
+    <button type="submit" class="btn btn-success">Enregistrer</button>
+</form>
+{% endblock %}
